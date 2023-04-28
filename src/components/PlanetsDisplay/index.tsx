@@ -1,7 +1,17 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
-export default function PlanetsDisplay() {
-  const planets = [
+interface Planet {
+  id: number
+  name: string
+}
+
+interface PlanetsListProps {
+  planetsList: Planet[]
+}
+
+export default function PlanetsDisplay({ planetsList }: PlanetsListProps) {
+  const planetsImages = [
     { src: '/images/planet-1.png', size: 154, position: 'center' },
     { src: '/images/planet-2.png', size: 79, position: 'bottom' },
     { src: '/images/planet-3.png', size: 185, position: 'top' },
@@ -21,40 +31,61 @@ export default function PlanetsDisplay() {
 
   return (
     <div className="max-w-[1440] h-full flex flex-wrap justify-center items-center px-20">
-      {planets.map((planet, index) => {
-        switch (planet.position) {
+      {planetsList.map((planet: Planet, index) => {
+        switch (planetsImages[index].position) {
           case 'top':
             return (
-              <Image
+              <Link
+                key={planet.id}
+                href={'/search'}
+                data-tooltip-id="my-tooltip"
+                data-tooltip-content={planet.name}
                 className="mr-20 self-start"
-                src={planet.src}
-                alt=""
-                width={planet.size}
-                height={planet.size}
-                key={index}
-              />
+              >
+                <Image
+                  src={planetsImages[index].src}
+                  alt=""
+                  width={planetsImages[index].size}
+                  height={planetsImages[index].size}
+                  key={index}
+                />
+              </Link>
             )
           case 'bottom':
             return (
-              <Image
+              <Link
+                key={planet.id}
+                href={'/search'}
+                data-tooltip-id="my-tooltip"
+                data-tooltip-content={planet.name}
                 className="mr-20 self-end"
-                src={planet.src}
-                alt=""
-                width={planet.size}
-                height={planet.size}
-                key={index}
-              />
+              >
+                <Image
+                  src={planetsImages[index].src}
+                  alt=""
+                  width={planetsImages[index].size}
+                  height={planetsImages[index].size}
+                  key={index}
+                />
+              </Link>
             )
           default:
             return (
-              <Image
+              <Link
+                key={planet.id}
+                href={'/search'}
+                data-tooltip-id="my-tooltip"
+                data-tooltip-content={planet.name}
                 className="mr-20"
-                src={planet.src}
-                alt=""
-                width={planet.size}
-                height={planet.size}
-                key={index}
-              />
+              >
+                <Image
+                  src={planetsImages[index].src}
+                  alt=""
+                  width={planetsImages[index].size}
+                  height={planetsImages[index].size}
+                  key={index}
+                />
+              </Link>
             )
         }
       })}

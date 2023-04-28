@@ -12,7 +12,7 @@ import test from '../../public/images/test-character.png'
 
 function CharactersCards() {
   return (
-    <section className="flex justify-center items-center mb-20">
+    <section className="flex justify-center items-center mb-20 pl-12">
       <Swiper
         effect={'cards'}
         grabCursor={true}
@@ -217,7 +217,7 @@ export default function Search() {
           className="w-[20rem] font-bold"
         />
 
-        <span className="flex justify-center items-start gap-48">
+        <span className="flex flex-wrap justify-center items-start gap-48">
           <section className="bg-slate-background p-10 rounded-2xl">
             <Image
               src={planet}
