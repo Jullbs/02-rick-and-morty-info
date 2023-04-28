@@ -19,6 +19,7 @@ module.exports = {
         'gray-400': '#393939',
         'gray-500': '#262626',
         'gray-600': '#272727',
+        'slate-background': '#000a10d1'
       }
     },
   },
